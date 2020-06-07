@@ -1,19 +1,19 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 
-const Service = axios.create({
+export const Service = axios.create({
   baseURL: 'https://desafio-mobile-pitang.herokuapp.com/movies',
 });
 
 class MovieService {
-  async movies(page?: number, size?: number) {
+  async movies(page?: number = 0, size?: number = 9) {
     try {
       const { data } = await Service.get('/list', {
         params: { page, size },
       });
       return data;
     } catch (error) {
-      Alert.alert(JSON.stringify({ error }));
+      // Alert.alert(JSON.stringify({ error }));
     }
   }
 
@@ -22,9 +22,9 @@ class MovieService {
       const { data } = await Service.get(`/detail/${id}`);
       return data;
     } catch (error) {
-      Alert.alert(JSON.stringify({ error }));
+      // Alert.alert(JSON.stringify({ error }));
     }
   }
 }
 
-export default MovieService;
+export default new MovieService();
