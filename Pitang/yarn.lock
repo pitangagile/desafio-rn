@@ -6038,14 +6038,6 @@ react-native-fast-image@^8.1.5:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.1.5.tgz#0a6404c988dad68c98d26f91155d0a5293ba2ea5"
   integrity sha512-DoAWGLeQ2hbllummrpXH9B38OgM0TFmNYCF34F90/hdHZirqUtYHzF4QDdb/NV7ebSijHmM3mpkzct8PXtcYyg==
 
-react-native-flash-message@^0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/react-native-flash-message/-/react-native-flash-message-0.1.15.tgz#ebda84c27665756dbae85e06e3205c161cc3eda0"
-  integrity sha512-aibvd+rp2JrLEqdkKSvrlSHArgFbOycpxYdqEfWd+h3G6JixMPdbCgvRcHSBVM9M1ZIieY9x3a3NCRC4yd7hVw==
-  dependencies:
-    prop-types "^15.7.2"
-    react-native-iphone-x-helper "^1.2.1"
-
 react-native-gesture-handler@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
@@ -6084,11 +6076,6 @@ react-native-screens@^2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.8.0.tgz#9f989096fc5ccf248e0dfa93a74f1a64057e15f1"
   integrity sha512-fUCIQLZX+5XB0ypWX038P3zso54IFFjTsQUZJWEsjC3pp5rPItAt5SzqtJn+uVjcJaczZ+dpIuvj6IFLqkWLZQ==
-
-react-native-shared-element@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-shared-element/-/react-native-shared-element-0.7.0.tgz#c5e02eb372f6e38e48eb1030fd59be8f3d8c7a1f"
-  integrity sha512-TJTGwQceABYete+vH3ahNSgzVzXz7X2SPv3thT91gdcFCrm7ht7IKXBXJiYjOA+4TfdqnGEAWkspCy80oEnOgw==
 
 react-native-testing-library@^2.0.1:
   version "2.0.1"
@@ -6147,21 +6134,6 @@ react-native@0.62.2:
     stacktrace-parser "^0.1.3"
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
-
-react-navigation-shared-element@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-navigation-shared-element/-/react-navigation-shared-element-3.0.0.tgz#3dfa6a71f138e4ceb457a91aea3ef2a8ab2a6a32"
-  integrity sha512-nSmbgf4+hKSZU1Rzi5Bm1Is5mt0Z+xY5sXeTx4t5KMnmNW4lz5M83p9oTW6mKDoXUeCocUfeVwbCmsAjlyTLQw==
-  dependencies:
-    hoist-non-react-statics "^3.3.2"
-
-react-navigation-stack@^2.5.1:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-2.7.0.tgz#290e8c054d7559d3980e2bff0869c5e7066a4d4f"
-  integrity sha512-EnPQqbhBwY6b53O3JBNCG38w5Z1/ZbTJ79OZsC2ukdAPlpF7pQ9+0m2BFLqtPTieeh4wBfYW4eX/DXgKEqkNOA==
-  dependencies:
-    color "^3.1.2"
-    react-native-iphone-x-helper "^1.2.1"
 
 react-navigation@^4.3.9:
   version "4.3.9"

@@ -1,5 +1,4 @@
 import React, { createContext, useReducer, useEffect, useMemo } from 'react';
-import { showMessage, hideMessage } from 'react-native-flash-message';
 import { State } from '../typings';
 import MovieService from '../service';
 
