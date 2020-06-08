@@ -8,13 +8,16 @@ import {
 } from 'rn-placeholder';
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native-gesture-handler';
+import sizes from '../helpers/utils';
+
+const size = sizes();
 
 export function MovieListLoading() {
-  const [fillLoading] = useState([...new Array(18).fill({})]);
+  const [fillLoading] = useState([...new Array(9).fill({})]);
   return (
     <Container>
       <FlatList
-        numColumns={3}
+        numColumns={size === 'small' || size === 'medium' ? 2 : 3}
         data={fillLoading}
         keyExtractor={(item) => item}
         renderItem={() => (
@@ -58,7 +61,7 @@ const PlaceholderLineStyled = styled(PlaceholderLine).attrs({ width: 80 })`
 const styles = StyleSheet.create({
   CardItem: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     alignContent: 'center',
     margin: 5,

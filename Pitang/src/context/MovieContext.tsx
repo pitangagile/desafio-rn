@@ -1,6 +1,10 @@
-import React, { createContext, useReducer, useEffect } from 'react';
-import { Movie } from 'src/typings';
+import React, { createContext, useReducer, useEffect, useMemo } from 'react';
+import { showMessage, hideMessage } from 'react-native-flash-message';
+import { State } from '../typings';
 import MovieService from '../service';
+
+const NOT_FOUND_IMAGE_URL =
+  'https://lh3.googleusercontent.com/proxy/K3O5DpTy-n1fmCNzre-uLS2NNDInpPLAfj45H5yCgVBxB32GM6eBdjpT295r09la3xGJgHwWwtqtS2Dbprow2R1ME8skWMRslfllNUykLOqF2bA';
 
 const STATUS = {
   START: 'start',
@@ -9,38 +13,49 @@ const STATUS = {
   REJECTED: 'rejected',
 };
 
-const ACTIONS = {
+const TYPES = {
   SUCCESS: '@movies/SUCCESS',
   ERROR: '@movies/ERROR',
   START: '@movies/START',
+  SET_PAGE: '@movies/SET_PAGE',
 };
 
-interface State {
-  data?: Array<Movie>;
-  error?: Error | any;
-  status?: string | any;
+interface IMovieContext {
+  state: State;
+  loadMovies(): void;
+  dispatch: any;
+  isLoading: boolean;
+  hasError: boolean;
+  NOT_FOUND_IMAGE_URL: string;
 }
 
-interface Action extends State {
-  type: string | any;
-}
-
-const MovieContext = createContext<State>({} as State);
+const MovieContext = createContext<IMovieContext>({} as IMovieContext);
 
 const INITIAL_STATE: State = {
   data: [],
   error: null,
+  page: 0,
   status: 'idle',
 };
 
-const movieReducer = (state: State, action: Action) => {
+const movieReducer = (state: State, action: any): State => {
   switch (action.type) {
-    case ACTIONS.START:
+    case TYPES.START:
       return { ...state, status: STATUS.START };
-    case ACTIONS.SUCCESS:
-      return { ...state, status: STATUS.SUCCESS, data: action.data };
-    case ACTIONS.ERROR:
-      return { ...state, status: STATUS.REJECTED, error: action.error };
+    case TYPES.SUCCESS:
+      return {
+        ...state,
+        status: STATUS.SUCCESS,
+        //@ts-ignore
+        data: state.data.concat(action.data),
+        page: action.page,
+      };
+    case TYPES.ERROR:
+      return {
+        ...state,
+        status: STATUS.REJECTED,
+        error: action.error,
+      };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -60,16 +75,33 @@ export const MovieProvider: React.FC<Props> = ({ children }) => {
 
   async function loadMovies() {
     try {
-      dispatch({ type: ACTIONS.START });
-      const data = await MovieService.movies();
-      dispatch({ type: ACTIONS.SUCCESS, data });
+      dispatch({ type: TYPES.START });
+      const data = await MovieService.movies(state.page, 6);
+      //@ts-ignore
+      dispatch({ type: TYPES.SUCCESS, data, page: state.page + 1 });
     } catch (error) {
-      dispatch({ type: ACTIONS.ERROR, error });
+      dispatch({ type: TYPES.ERROR, error });
     }
   }
 
+  const isLoading = useMemo(
+    //@ts-ignore
+    () => state.status === STATUS.START && state.data.length === 0,
+    [state.status, state.data],
+  );
+
+  const hasError = state.status === STATUS.REJECTED;
+
   return (
-    <MovieContext.Provider value={{ state, dispatch }}>
+    <MovieContext.Provider
+      value={{
+        state,
+        dispatch,
+        loadMovies,
+        isLoading,
+        hasError,
+        NOT_FOUND_IMAGE_URL,
+      }}>
       {children}
     </MovieContext.Provider>
   );

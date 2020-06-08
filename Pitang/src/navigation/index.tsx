@@ -1,47 +1,24 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Movies from '../screens/Movies';
 import MovieDetails from '../screens/MovieDetails';
-import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
+import { ROUTENAMES } from './routeNames';
 
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
-const Stack = createSharedElementStackNavigator();
-
-function SharedStack() {
+function StackNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
         cardStyle: { backgroundColor: 'transparent' },
         cardOverlayEnabled: true,
-        cardStyleInterpolator: ({ current: { progress } }) => ({
-          cardStyle: {
-            opacity: progress.interpolate({
-              inputRange: [0, 0.5, 0.9, 1],
-              outputRange: [0, 0.25, 0.7, 1],
-            }),
-          },
-          overlayStyle: {
-            opacity: progress.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0, 0.5],
-              extrapolate: 'clamp',
-            }),
-          },
-        }),
+        gestureEnabled: true,
       }}
       headerMode="none"
       mode="modal">
-      <Stack.Screen name="Movies" component={Movies} />
-      <Stack.Screen
-        name="MovieDetails"
-        component={MovieDetails}
-        sharedElements={(route) => {
-          const { item, rootScreen } = route.params;
-          console.log('sharedElement called', item._id, rootScreen);
-          return [`${rootScreen}.item.${item._id}.photo`];
-        }}
-      />
+      <Stack.Screen name={ROUTENAMES.MOVIES} component={Movies} />
+      <Stack.Screen name={ROUTENAMES.MOVIE_DETAILS} component={MovieDetails} />
     </Stack.Navigator>
   );
 }
@@ -49,7 +26,7 @@ function SharedStack() {
 function Navigation() {
   return (
     <NavigationContainer>
-      <SharedStack />
+      <StackNavigator />
     </NavigationContainer>
   );
 }

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Image from 'react-native-fast-image';
 import { Movie } from 'src/typings';
-import { SharedElement } from 'react-navigation-shared-element';
-import { useNavigation } from '@react-navigation/native';
+import MovieContext from '../context/MovieContext';
+import { ROUTENAMES } from '../navigation/routeNames';
 
 type Props = {
   item: Movie | any;
@@ -12,22 +13,25 @@ type Props = {
 
 const MovieItem: React.FC<Props> = ({ item }) => {
   const navigation = useNavigation();
+  const { NOT_FOUND_IMAGE_URL } = useContext(MovieContext);
+
   return (
     <TouchableOpacity
       style={styles.item}
       onPress={() =>
-        navigation.navigate('MovieDetails', {
+        navigation.navigate(ROUTENAMES.MOVIE_DETAILS, {
           item,
         })
       }>
-      <SharedElement id={`item.${item._id}.photo`}>
-        <FastImage
-          resizeMode={'stretch'}
-          fallback
-          source={{ uri: item.url, priority: Image.priority.normal }}
-        />
-      </SharedElement>
-      <MovieName numberOfLines={3}>{item.name}</MovieName>
+      <FastImage
+        resizeMode={'stretch'}
+        fallback
+        source={{
+          uri: item?.url ? item?.url : NOT_FOUND_IMAGE_URL,
+          priority: Image.priority.normal,
+        }}
+      />
+      <MovieName numberOfLines={3}>{item?.name}</MovieName>
     </TouchableOpacity>
   );
 };
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
     elevation: 7,
+    justifyContent: 'space-between',
     margin: 5,
   },
 });
