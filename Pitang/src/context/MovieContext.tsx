@@ -3,7 +3,7 @@ import { State } from '../typings';
 import MovieService from '../service';
 
 const NOT_FOUND_IMAGE_URL =
-  'https://lh3.googleusercontent.com/proxy/K3O5DpTy-n1fmCNzre-uLS2NNDInpPLAfj45H5yCgVBxB32GM6eBdjpT295r09la3xGJgHwWwtqtS2Dbprow2R1ME8skWMRslfllNUykLOqF2bA';
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR09guUyR_k0wk-evy8vBO14xaxirHrnrCbNye4uXRDpHa6_Y5K&usqp=CAU';
 
 const STATUS = {
   START: 'start',
@@ -75,7 +75,7 @@ export const MovieProvider: React.FC<Props> = ({ children }) => {
   async function loadMovies() {
     try {
       dispatch({ type: TYPES.START });
-      const data = await MovieService.movies(state.page, 6);
+      const data = await MovieService.list(state.page, 6);
       //@ts-ignore
       dispatch({ type: TYPES.SUCCESS, data, page: state.page + 1 });
     } catch (error) {

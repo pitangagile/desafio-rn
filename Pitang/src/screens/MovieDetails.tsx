@@ -45,7 +45,7 @@ const MovieDetails = ({ route }: any) => {
 
   async function loadDetails() {
     try {
-      const movie = await MovieService.movieDetails(item._id);
+      const movie = await MovieService.details(item._id);
       setDetails(movie);
       setLoading(false);
     } catch (error) {

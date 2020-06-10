@@ -6,7 +6,7 @@ export const Service = axios.create({
 });
 
 class MovieService {
-  async movies(page?: number, size?: number) {
+  async list(page?: number, size?: number) {
     StatusBar.setNetworkActivityIndicatorVisible(true);
 
     const { data } = await Service.get('/list', {
@@ -18,7 +18,7 @@ class MovieService {
     return data;
   }
 
-  async movieDetails(id: number) {
+  async details(id: number) {
     StatusBar.setNetworkActivityIndicatorVisible(true);
 
     const { data } = await Service.get(`/detail/${id}`);
