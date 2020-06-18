@@ -13,19 +13,28 @@ const App = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [end, setEnd] = useState(false);
 
   useEffect(() => {
+    movieListLoader(page);
+  }, []);
+
+  const movieListLoader = async pageNum => {
     setLoading(true);
-    axios
+    await axios
       .get(
-        `https://desafio-mobile-pitang.herokuapp.com/movies/list?page=${page}&size=12`,
+        `https://desafio-mobile-pitang.herokuapp.com/movies/list?page=${pageNum}&size=12`,
       )
       .then(res => {
         const movieApi = res.data;
-        setMovieList(movieApi);
+        setEnd(!movieApi.length);
+        if (!end) {
+          setMovieList([...movieList, ...movieApi]);
+          setPage(page + 1);
+        }
         setLoading(false);
       });
-  }, [page]);
+  };
 
   const handleOpenInfo = id => {
     setLoading(true);
@@ -34,14 +43,12 @@ const App = () => {
       .then(res => {
         const movieInfo = res.data;
         console.log(movieInfo);
-        setModal(true);
+        setModal(false);
       });
   };
 
   const handleInfinityLoading = () => {
-    setLoading(true);
-    console.log(page);
-    //setPage(page + 1);
+    !end && movieListLoader(page);
   };
 
   return (

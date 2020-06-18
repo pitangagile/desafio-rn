@@ -2,10 +2,14 @@ import React from 'react';
 import { TouchableOpacity, View, Image, Text, StyleSheet } from 'react-native';
 
 const MovieCard = ({ image, title, onPress }) => {
+  const img =
+    image !== ''
+      ? image
+      : 'https://via.placeholder.com/300x450.png?text=Em+breve';
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <View style={styles.imgContainer}>
-        <Image source={{ uri: image }} style={styles.img} />
+        <Image source={{ uri: img }} style={styles.img} />
       </View>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
