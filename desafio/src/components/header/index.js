@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-const HeaderApp = () => {
+const HeaderApp = ({ title }) => {
   return (
     <SafeAreaView>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Desafio Pitang</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
     </SafeAreaView>
   );

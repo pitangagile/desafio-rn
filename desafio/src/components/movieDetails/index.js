@@ -1,16 +1,22 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 
-const MovieDetails = ({image, title, description, onPress}) => {
+const MovieDetails = ({ image, title, description, onPress }) => {
   const img =
     image !== ''
       ? image
       : 'https://via.placeholder.com/300x450.png?text=Em+breve';
   return (
-    
     <View style={styles.details}>
       <SafeAreaView>
-        <TouchableOpacity onPress={onPress} style={styles.back}>
+        <TouchableOpacity testID="back" onPress={onPress} style={styles.back}>
           <Text style={styles.backText}>{'<< Voltar'}</Text>
         </TouchableOpacity>
         <View style={styles.mask}>
@@ -20,13 +26,12 @@ const MovieDetails = ({image, title, description, onPress}) => {
         <Text style={styles.sectionDescription}>{description}</Text>
       </SafeAreaView>
     </View>
-    
   );
 };
 
 const styles = StyleSheet.create({
   details: {
-    flex: 1
+    flex: 1,
   },
   mask: {
     marginBottom: 15,
@@ -44,16 +49,16 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 15
+    marginBottom: 15,
   },
   sectionDescription: {
     color: '#fff',
-    fontSize: 16
+    fontSize: 16,
   },
   backText: {
     color: '#fff',
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default MovieDetails;

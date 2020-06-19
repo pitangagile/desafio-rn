@@ -7,7 +7,7 @@ const MovieCard = ({ image, title, onPress }) => {
       ? image
       : 'https://via.placeholder.com/300x450.png?text=Em+breve';
   return (
-    <TouchableOpacity onPress={onPress} style={styles.card}>
+    <TouchableOpacity testID="touch" onPress={onPress} style={styles.card}>
       <View style={styles.imgContainer}>
         <Image source={{ uri: img }} style={styles.img} />
       </View>

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieDetails /> MovieDetails Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="back"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontWeight": "bold",
+          }
+        }
+      >
+        &lt;&lt; Voltar
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 450,
+          "marginBottom": 15,
+          "marginTop": 15,
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": undefined,
+          }
+        }
+        style={
+          Object {
+            "alignSelf": "center",
+            "flex": 1,
+            "resizeMode": "contain",
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "marginBottom": 15,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 16,
+        }
+      }
+    />
+  </RCTSafeAreaView>
+</View>
+`;

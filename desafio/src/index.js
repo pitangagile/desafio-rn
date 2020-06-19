@@ -56,7 +56,7 @@ const App = () => {
 
   return (
     <>
-      <HeaderApp />
+      <HeaderApp title="Desafio Pitang" />
       <View style={styles.container}>
         <FlatList
           numColumns={2}
@@ -74,17 +74,19 @@ const App = () => {
           onEndReachedThreshold={0.1}
         />
         {modal && (
-        <Modal 
-          isVisible={modal} 
-          hideModalContentWhileAnimating 
-          animationOut="slideOutDown" 
-          animationIn="slideInUp">
-          <MovieDetails 
-            image={movieInfo.url} 
-            title={movieInfo.name}  
-            description={movieInfo.description} 
-            onPress={() => setModal(!modal)} />
-        </Modal>
+          <Modal
+            isVisible={modal}
+            onBackButtonPress={() => setModal(!modal)}
+            hideModalContentWhileAnimating
+            animationOut="slideOutDown"
+            animationIn="slideInUp">
+            <MovieDetails
+              image={movieInfo.url}
+              title={movieInfo.name}
+              description={movieInfo.description}
+              onPress={() => setModal(!modal)}
+            />
+          </Modal>
         )}
       </View>
     </>
