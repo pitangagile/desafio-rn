@@ -69,14 +69,17 @@ const App = () => {
               onPress={() => handleOpenInfo(item._id)}
             />
           )}
-          ListFooterComponent={loading && <Footer />}
+          ListFooterComponent={
+            <Footer {...{ loading, end }} endText="Isso é tudo..." />
+          }
           onEndReached={handleInfinityLoading}
           onEndReachedThreshold={0.1}
         />
         {modal && (
           <Modal
             isVisible={modal}
-            onBackButtonPress={() => setModal(!modal)}
+            backdropOpacity={0.8}
+            onBackButtonPress={() => setModal(false)}
             hideModalContentWhileAnimating
             animationOut="slideOutDown"
             animationIn="slideInUp">
@@ -84,7 +87,7 @@ const App = () => {
               image={movieInfo.url}
               title={movieInfo.name}
               description={movieInfo.description}
-              onPress={() => setModal(!modal)}
+              onPress={() => setModal(false)}
             />
           </Modal>
         )}
