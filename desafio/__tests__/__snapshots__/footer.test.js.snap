@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> Footer hide loader and show end message 1`] = `
+<View
+  style={
+    Object {
+      "paddingVertical": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#ffdd00",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "paddingVertical": 20,
+        "textAlign": "center",
+        "width": "100%",
+      }
+    }
+  >
+    Texto aleatório
+  </Text>
+</View>
+`;
+
+exports[`<Footer /> Footer show loader and hide end message 1`] = `
+<View
+  style={
+    Object {
+      "paddingVertical": 20,
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
+`;
