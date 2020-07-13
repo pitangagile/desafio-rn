@@ -1,12 +1,10 @@
-# Desafio React Native
+# Aplicativo de consulta a API de Filmes #
 
 ## :camera: Demonstração
 <h1 align="center"> <img alt="resultado" src="https://github.com/Samuel-Rodrigues/desafio-rn/blob/master/pitangar.gif"/>
 </h1>
 
-# Criar um aplicativo de consulta a API de Filmes #
-
-Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados pelo endpoint. Seguem abaixo telas como guia:
+Aplicativo para consultar a API de Filmes e trazer os filmes enviados pelo endpoint.
 
 ### **O aplicativo deve contemplar** ###
 
