@@ -1,12 +1,10 @@
-# desafio-rn
-Desafio React Native
+# Aplicativo de consulta a API de Filmes #
 
-# Criar um aplicativo de consulta a API de Filmes #
+## :camera: Demonstração
+<h1 align="center"> <img alt="resultado" src="https://github.com/Samuel-Rodrigues/desafio-rn/blob/master/pitangar.gif"/>
+</h1>
 
-Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados pelo endpoint. Seguem abaixo telas como guia:
-
-![tela1](https://user-images.githubusercontent.com/7905193/33221593-75c45b4e-d12f-11e7-833c-cc4acbd5ef0e.png)
-![tela2](https://user-images.githubusercontent.com/7905193/33221600-85b668ee-d12f-11e7-95fa-8f66bd47f6ab.png)
+Aplicativo para consultar a API de Filmes e trazer os filmes enviados pelo endpoint.
 
 ### **O aplicativo deve contemplar** ###
 
@@ -17,42 +15,18 @@ Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados p
 - __Detalhes de um filme__. Exemplo de chamada na API: `https://desafio-mobile-pitang.herokuapp.com/movies/detail/59e8ec97f36d280364369ca1`.
     * O item de detalhe deve exibir Nome, Foto e Descrição do filme.
 
-### **Essencial** ##
-* React Native 
-* Hooks ou Redux
-* Guidelines UX e UI.
-* Maior ou igual JavaScript ES6
-* Responsivo
+## :clipboard: Iniciando a aplicação Mobile (React-native)
 
-### **Desejável** ###
+1. Clone o repositório com `https://github.com/Samuel-Rodrigues/fortbrasil.git`
+2. Instale todas as dependencias com o comando `yarn` e `cd ios; pod install; cd ..`
+3. Digite `react-native run-ios` ou `react-native run-android`  para rodar o projeto
 
-* Testes
-* Build no IOS
+## :hammer: Ferramentas usadas
 
-### **Sugestões** ###
-
-Nesta seção sugerimos algumas bibliotecas para o uso, mas fique à vontade para escolher outras que não estiverem na lista.
-
-* Axios 
-* Styled-components
-
-### **OBS** ###
-
-A foto das telas de mockup são só um guia, fique a vontade para usar o padrão de usabilidade da sua escolha.
-
-### **Etapas para submissão** ###
-
-O canditado ao finalizar a implementação deverá enviar um pull request para o repositório em questão.
-
-Segue o passo-a-passo:
-
-1. Fazer fork do respositório
-2. Implementar seu projeto no fork realizado.
-3. Comitar e subir todas as alteraçes para o fork criado por você.
-4. Enviar um pull request pelo Github.
-
-O fork deverá ser público para inspeção do código.
-
-### **Observações** ###
-
-Não fazer push para este repositório.
+- ⚛️ **React-native** - Uma biblioteca JavaScript para criar mobile Apps 
+- ⚛️ **Styled Components** - Biblioteca Javascript pra estilizar componentes
+- 📄 **Axios** - Biblioteca Javascript para fazer requisições http
+- 📄 **Redux** - Biblioteca Javascript para manipular estado da aplicação
+- 📄 **Axios** - Biblioteca Javascript para fazer requisições httpo
+- 📄 **Axios** - Biblioteca Javascript para fazer requisições http
+... entre outras.
