@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "moviecatalog.app"
-               BlueprintName = "moviecatalog"
-               ReferencedContainer = "container:moviecatalog.xcodeproj">
+               BuildableName = "mymovies.app"
+               BlueprintName = "mymovies"
+               ReferencedContainer = "container:mymovies.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "moviecatalogTests.xctest"
-               BlueprintName = "moviecatalogTests"
-               ReferencedContainer = "container:moviecatalog.xcodeproj">
+               BuildableName = "mymoviesTests.xctest"
+               BlueprintName = "mymoviesTests"
+               ReferencedContainer = "container:mymovies.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "moviecatalog.app"
-            BlueprintName = "moviecatalog"
-            ReferencedContainer = "container:moviecatalog.xcodeproj">
+            BuildableName = "mymovies.app"
+            BlueprintName = "mymovies"
+            ReferencedContainer = "container:mymovies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "moviecatalog.app"
-            BlueprintName = "moviecatalog"
-            ReferencedContainer = "container:moviecatalog.xcodeproj">
+            BuildableName = "mymovies.app"
+            BlueprintName = "mymovies"
+            ReferencedContainer = "container:mymovies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
