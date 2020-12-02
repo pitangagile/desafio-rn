@@ -33,9 +33,10 @@ Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados p
 
 Nesta seção sugerimos algumas bibliotecas para o uso, mas fique à vontade para escolher outras que não estiverem na lista.
 
-* [ ] Axios 
+* [ ] Axios
 * [ ] Styled-components
 
 ### **Escolhas do autor** ###
 
 * [X] Typescript
+* [X] ESLint e Prettier
