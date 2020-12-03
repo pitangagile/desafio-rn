@@ -1,11 +1,6 @@
-import React, { useCallback, useState } from 'react';
-import {
-  FlatList,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native';
+import React from 'react';
 
-import { useDimensions } from '../../utils/useDimensions';
+import Carousel from '../../components/Carousel';
 
 import {
   Container,
@@ -14,7 +9,6 @@ import {
   Content,
   MovieListHeaderText,
   MovieList,
-  MovieItem,
   MovieImage,
   MovieTitle,
 } from './styles';
@@ -51,17 +45,6 @@ const Dashboard: React.FC = () => {
     },
   ];
 
-  const { width } = useDimensions();
-
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = useCallback(
-    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const { x } = event.nativeEvent.contentOffset;
-      setScrollPosition(x / (width - 128 + 16));
-    },
-    [width],
-  );
-
   return (
     <Container>
       <Header>
@@ -74,27 +57,18 @@ const Dashboard: React.FC = () => {
         </MovieListHeaderText>
 
         <MovieList>
-          <FlatList
-            contentContainerStyle={{ paddingHorizontal: 48 }}
-            horizontal
-            pagingEnabled
-            snapToInterval={width - 128 + 16}
-            decelerationRate="fast"
-            onScroll={handleScroll}
+          <Carousel
             data={data}
             keyExtractor={(item) => item._id}
-            renderItem={({ index, item }) => (
-              <MovieItem
-                screenWidth={width}
-                distanceToSelectedScroll={Math.abs(scrollPosition - index)}
-              >
+            renderItem={({ item }) => (
+              <>
                 <MovieImage
                   source={{
                     uri: item.url,
                   }}
                 />
                 <MovieTitle>{item.name}</MovieTitle>
-              </MovieItem>
+              </>
             )}
           />
         </MovieList>
