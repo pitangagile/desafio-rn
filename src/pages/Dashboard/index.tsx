@@ -1,5 +1,9 @@
-import React from 'react';
-import { FlatList } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import {
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from 'react-native';
 
 import { useDimensions } from '../../utils/useDimensions';
 
@@ -49,6 +53,15 @@ const Dashboard: React.FC = () => {
 
   const { width } = useDimensions();
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const { x } = event.nativeEvent.contentOffset;
+      setScrollPosition(x / (width - 128 + 16));
+    },
+    [width],
+  );
+
   return (
     <Container>
       <Header>
@@ -67,10 +80,14 @@ const Dashboard: React.FC = () => {
             pagingEnabled
             snapToInterval={width - 128 + 16}
             decelerationRate="fast"
+            onScroll={handleScroll}
             data={data}
             keyExtractor={(item) => item._id}
-            renderItem={({ item }) => (
-              <MovieItem screenWidth={width}>
+            renderItem={({ index, item }) => (
+              <MovieItem
+                screenWidth={width}
+                distanceToSelectedScroll={Math.abs(scrollPosition - index)}
+              >
                 <MovieImage
                   source={{
                     uri: item.url,
