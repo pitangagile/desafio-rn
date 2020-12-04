@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 import Carousel from '../../components/Carousel';
 
@@ -45,6 +48,15 @@ const Dashboard: React.FC = () => {
     },
   ];
 
+  const navigation = useNavigation();
+
+  const handleNavigateToDetails = useCallback(
+    (_id: string) => {
+      navigation.navigate('Details', { _id });
+    },
+    [navigation],
+  );
+
   return (
     <Container>
       <Header>
@@ -61,14 +73,18 @@ const Dashboard: React.FC = () => {
             data={data}
             keyExtractor={(item) => item._id}
             renderItem={({ item }) => (
-              <>
-                <MovieImage
-                  source={{
-                    uri: item.url,
-                  }}
-                />
-                <MovieTitle>{item.name}</MovieTitle>
-              </>
+              <TouchableHighlight
+                onPress={() => handleNavigateToDetails(item._id)}
+              >
+                <View>
+                  <MovieImage
+                    source={{
+                      uri: item.url,
+                    }}
+                  />
+                  <MovieTitle>{item.name}</MovieTitle>
+                </View>
+              </TouchableHighlight>
             )}
           />
         </MovieList>

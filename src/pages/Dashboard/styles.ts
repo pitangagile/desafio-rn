@@ -10,7 +10,7 @@ export const Header = styled.View`
 `;
 
 export const HeaderText = styled.Text`
-  color: #fff;
+  color: #ddd;
   font-size: 48px;
   font-weight: bold;
 `;
@@ -20,7 +20,7 @@ export const Content = styled.View`
 `;
 
 export const MovieListHeaderText = styled.Text`
-  color: #fff;
+  color: #ddd;
   font-size: 16px;
   margin: 16px;
 `;
