@@ -12,10 +12,10 @@ Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados p
 
 - __Uma lista de filmes__. Exemplo de chamada na API: `https://desafio-mobile-pitang.herokuapp.com/movies/list?page=0&size=3`.
     * [ ] Paginação na tela de lista, com scroll infinito (incrementando o parâmetro `page`).
-    * [ ] Cada filme deve exibir Nome do filme e Foto do filme.
-    * [ ] Ao clicar em um item da lista, deve levar ao detalhe do filme.
+    * [X] Cada filme deve exibir Nome do filme e Foto do filme.
+    * [X] Ao clicar em um item da lista, deve levar ao detalhe do filme.
 - __Detalhes de um filme__. Exemplo de chamada na API: `https://desafio-mobile-pitang.herokuapp.com/movies/detail/59e8ec97f36d280364369ca1`.
-    * [ ] O item de detalhe deve exibir Nome, Foto e Descrição do filme.
+    * [X] O item de detalhe deve exibir Nome, Foto e Descrição do filme.
 
 ### **Essencial** ##
 * [X] React Native
@@ -33,8 +33,8 @@ Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados p
 
 Nesta seção sugerimos algumas bibliotecas para o uso, mas fique à vontade para escolher outras que não estiverem na lista.
 
-* [ ] Axios
-* [ ] Styled-components
+* [X] Axios
+* [X] Styled-components
 
 ### **Escolhas do autor** ###
 
