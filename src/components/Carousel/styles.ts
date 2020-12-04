@@ -16,6 +16,7 @@ export const Item = styled.View<ItemProps>`
   );
   margin: 0 8px;
   align-items: center;
+  padding-bottom: 16px;
 `;
 
 export const ListFooterItem = styled.View`

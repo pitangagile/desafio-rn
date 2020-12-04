@@ -26,7 +26,7 @@ export const MovieListHeaderText = styled.Text`
 `;
 
 export const MovieList = styled.View`
-  padding-top: 32px;
+  margin-top: 32px;
 `;
 
 export const MovieImage = styled.ImageBackground`
@@ -50,4 +50,5 @@ export const MovieTitle = styled.Text`
   font-size: 24px;
   font-weight: bold;
   margin-top: 8px;
+  min-height: 64px;
 `;
