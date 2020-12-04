@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 
+import { Linking } from 'react-native';
 import SkeletonText from '../../components/SkeletonText';
 
 import api from '../../services/api';
@@ -13,6 +14,9 @@ import {
   DescriptionSection,
   DescriptionTitleText,
   DescriptionText,
+  Footer,
+  SearchButton,
+  SearchButtonText,
 } from './styles';
 
 interface DetailsRouteParams {
@@ -34,6 +38,10 @@ const Details: React.FC = () => {
 
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
 
+  const handleOpenGoogleSearch = useCallback(() => {
+    Linking.openURL(`https://www.google.com/search?q=${movieDetails.name}`);
+  }, [movieDetails?.name]);
+
   useEffect(() => {
     api.get<MovieDetails>(`movies/detail/${params._id}`).then((response) => {
       setMovieDetails(response.data);
@@ -42,7 +50,7 @@ const Details: React.FC = () => {
 
   return (
     <Container>
-      <Content contentContainerStyle={{ alignItems: 'center' }}>
+      <Content contentContainerStyle={{ alignItems: 'center', padding: 32 }}>
         <MovieImage
           source={{
             uri: movieDetails?.url,
@@ -65,6 +73,7 @@ const Details: React.FC = () => {
               <SkeletonText length={11} fontSize={16} />
             )}
           </DescriptionTitleText>
+
           <DescriptionText>
             {movieDetails ? (
               movieDetails.description
@@ -73,6 +82,12 @@ const Details: React.FC = () => {
             )}
           </DescriptionText>
         </DescriptionSection>
+
+        <Footer>
+          <SearchButton onPress={handleOpenGoogleSearch}>
+            <SearchButtonText>Search</SearchButtonText>
+          </SearchButton>
+        </Footer>
       </Content>
     </Container>
   );

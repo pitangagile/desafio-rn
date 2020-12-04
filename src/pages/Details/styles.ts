@@ -1,3 +1,4 @@
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
@@ -5,9 +6,7 @@ export const Container = styled.SafeAreaView`
   background: #15151c;
 `;
 
-export const Content = styled.ScrollView`
-  padding: 32px;
-`;
+export const Content = styled.ScrollView``;
 
 export const MovieImage = styled.Image`
   width: 70%;
@@ -40,4 +39,25 @@ export const DescriptionText = styled.Text`
   line-height: 20px;
   text-align: justify;
   margin-top: 16px;
+`;
+
+export const Footer = styled.View`
+  width: 100%;
+  align-items: center;
+  margin-top: 24px;
+`;
+
+export const SearchButton = styled(RectButton)`
+  width: 90%;
+  height: 56px;
+  background: #302f4d;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SearchButtonText = styled.Text`
+  color: #ddd;
+  font-size: 18px;
+  font-weight: bold;
 `;
