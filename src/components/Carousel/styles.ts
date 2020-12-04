@@ -17,3 +17,9 @@ export const Item = styled.View<ItemProps>`
   margin: 0 8px;
   align-items: center;
 `;
+
+export const ListFooterItem = styled.View`
+  width: 100%;
+  aspect-ratio: ${2 / 3};
+  justify-content: center;
+`;

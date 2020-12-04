@@ -1,5 +1,7 @@
+/* eslint-disable react/require-default-props */
 import React, { useCallback, useState } from 'react';
 import {
+  ActivityIndicator,
   FlatList,
   FlatListProps,
   NativeScrollEvent,
@@ -8,11 +10,21 @@ import {
 
 import { useDimensions } from '../../utils/useDimensions';
 
-import { Item } from './styles';
+import { Item, ListFooterItem } from './styles';
 
-type CarouselProps = FlatListProps<any>;
+type CarouselProps<ItemT> = FlatListProps<ItemT> & {
+  loading?: boolean;
+  hasReachedEnd?: boolean;
+};
 
-const Carousel: React.FC<CarouselProps> = ({ renderItem, ...rest }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Carousel = <T extends unknown = any>({
+  renderItem,
+  ListFooterComponent,
+  loading = false,
+  hasReachedEnd = true,
+  ...rest
+}: CarouselProps<T>): ReturnType<React.FC<CarouselProps<T>>> => {
   const { width } = useDimensions();
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -32,6 +44,19 @@ const Carousel: React.FC<CarouselProps> = ({ renderItem, ...rest }) => {
       snapToInterval={width - 128 + 16}
       decelerationRate="fast"
       onScroll={handleScroll}
+      ListFooterComponent={
+        (loading || ListFooterComponent) && (
+          <Item screenWidth={width} distanceToSelectedScroll={1}>
+            <ListFooterItem>
+              {loading ? (
+                <ActivityIndicator size="large" color="#fff" />
+              ) : (
+                hasReachedEnd && ListFooterComponent
+              )}
+            </ListFooterItem>
+          </Item>
+        )
+      }
       renderItem={(renderItemProps) => (
         <Item
           screenWidth={width}

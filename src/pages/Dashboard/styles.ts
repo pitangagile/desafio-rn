@@ -29,10 +29,19 @@ export const MovieList = styled.View`
   padding-top: 32px;
 `;
 
-export const MovieImage = styled.Image`
+export const MovieImage = styled.ImageBackground`
   width: 100%;
   aspect-ratio: ${2 / 3};
   border-radius: 8px;
+  background-color: #ddd1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const MovieImageText = styled.Text`
+  color: #ddd;
+  text-align: center;
+  margin: 16px;
 `;
 
 export const MovieTitle = styled.Text`

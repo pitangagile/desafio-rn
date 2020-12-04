@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 
 import Carousel from '../../components/Carousel';
+
+import api from '../../services/api';
 
 import {
   Container,
@@ -13,6 +15,7 @@ import {
   MovieListHeaderText,
   MovieList,
   MovieImage,
+  MovieImageText,
   MovieTitle,
 } from './styles';
 
@@ -24,29 +27,30 @@ interface Movie {
 }
 
 const Dashboard: React.FC = () => {
-  const data: Movie[] = [
-    {
-      _id: '5d9e2b219aed8c0c42f775dd',
-      name: 'Aladdin',
-      url:
-        'https://image.tmdb.org/t/p/w300_and_h450_bestv2/cYlzLYlhUXS0kW9T3ttAQ6fvZuV.jpg',
-      __v: 0,
-    },
-    {
-      _id: '5d9e50204aa94d85823838f0',
-      name: 'Avatar',
-      url:
-        'https://media.fstatic.com/9Nj6GJcDtcgMG4FllePHuegogts=/fit-in/290x478/smart/media/movies/covers/2011/06/71fc1d0bb2bc1483e66941bb2f17d830.jpg',
-      __v: 0,
-    },
-    {
-      _id: '5d9e4ebc4aa94d85823838ee',
-      name: 'Bacurau',
-      url:
-        'https://media.fstatic.com/yQz_oR8G5_y_OOCDHVesLVN3oyA=/fit-in/290x478/smart/media/movies/covers/2019/07/0636548.jpg-r_1920_1080-f_jpg-q_x-xxyxx.jpg',
-      __v: 0,
-    },
-  ];
+  const [data, setData] = useState<Movie[]>([]);
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
+
+  const loadMore = useCallback(() => {
+    if (hasReachedEnd || loading) return;
+
+    setLoading(true);
+
+    api.get<Movie[]>(`movies/list?page=${page}&size=3`).then((response) => {
+      setData((oldData) => [...oldData, ...response.data]);
+      if (response.data.length === 0) {
+        setHasReachedEnd(true);
+      }
+      setPage((oldPage) => oldPage + 1);
+      setLoading(false);
+    });
+  }, [hasReachedEnd, loading, page]);
+
+  useEffect(() => {
+    loadMore();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const navigation = useNavigation();
 
@@ -72,19 +76,29 @@ const Dashboard: React.FC = () => {
           <Carousel
             data={data}
             keyExtractor={(item) => item._id}
+            indicatorStyle="white"
+            onEndReached={loadMore}
+            onEndReachedThreshold={1}
+            loading={loading}
+            hasReachedEnd={hasReachedEnd}
+            ListFooterComponent={
+              <MovieImageText>No more movies available</MovieImageText>
+            }
             renderItem={({ item }) => (
-              <TouchableHighlight
-                onPress={() => handleNavigateToDetails(item._id)}
-              >
+              <RectButton onPress={() => handleNavigateToDetails(item._id)}>
                 <View>
                   <MovieImage
                     source={{
-                      uri: item.url,
+                      uri: item.url || undefined,
                     }}
-                  />
+                  >
+                    {item.url ? null : (
+                      <MovieImageText>No image available</MovieImageText>
+                    )}
+                  </MovieImage>
                   <MovieTitle>{item.name}</MovieTitle>
                 </View>
-              </TouchableHighlight>
+              </RectButton>
             )}
           />
         </MovieList>
