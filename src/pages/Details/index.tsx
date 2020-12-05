@@ -1,15 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useRoute } from '@react-navigation/native';
-
 import { Linking } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
+
 import SkeletonText from '../../components/SkeletonText';
 
 import api from '../../services/api';
 
 import {
   Container,
+  Header,
+  BackButton,
   Content,
   MovieImage,
+  MovieImageText,
   MovieTitle,
   DescriptionSection,
   DescriptionTitleText,
@@ -39,8 +43,14 @@ const Details: React.FC = () => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
 
   const handleOpenGoogleSearch = useCallback(() => {
-    Linking.openURL(`https://www.google.com/search?q=${movieDetails.name}`);
+    Linking.openURL(`https://www.google.com/search?q=${movieDetails?.name}`);
   }, [movieDetails?.name]);
+
+  const navigation = useNavigation();
+
+  const handleGoBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   useEffect(() => {
     api.get<MovieDetails>(`movies/detail/${params._id}`).then((response) => {
@@ -50,12 +60,22 @@ const Details: React.FC = () => {
 
   return (
     <Container>
+      <Header>
+        <BackButton onPress={handleGoBack}>
+          <Icon name="arrow-left" size={24} color="#ddd" />
+        </BackButton>
+      </Header>
+
       <Content contentContainerStyle={{ alignItems: 'center', padding: 32 }}>
         <MovieImage
           source={{
-            uri: movieDetails?.url,
+            uri: movieDetails?.url || undefined,
           }}
-        />
+        >
+          {movieDetails?.url ? null : (
+            <MovieImageText>No image available</MovieImageText>
+          )}
+        </MovieImage>
 
         <MovieTitle>
           {movieDetails ? (

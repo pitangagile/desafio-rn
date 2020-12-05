@@ -8,11 +8,28 @@ export const Container = styled.SafeAreaView`
 
 export const Content = styled.ScrollView``;
 
-export const MovieImage = styled.Image`
+export const Header = styled.View``;
+
+export const BackButton = styled(RectButton)`
+  width: 40px;
+  padding: 8px;
+  margin: 8px 8px 4px 8px;
+  border-radius: 20px;
+`;
+
+export const MovieImage = styled.ImageBackground`
   width: 70%;
   aspect-ratio: ${2 / 3};
   border-radius: 8px;
   background-color: #ddd1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const MovieImageText = styled.Text`
+  color: #ddd;
+  text-align: center;
+  margin: 16px;
 `;
 
 export const MovieTitle = styled.Text`
