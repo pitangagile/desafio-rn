@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Linking } from 'react-native';
+import { Alert, Linking } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -53,16 +53,21 @@ const Details: React.FC = () => {
   }, [navigation]);
 
   useEffect(() => {
-    api.get<MovieDetails>(`movies/detail/${params._id}`).then((response) => {
-      setMovieDetails(response.data);
-    });
+    api
+      .get<MovieDetails>(`movies/detail/${params._id}`)
+      .then((response) => {
+        setMovieDetails(response.data);
+      })
+      .catch(() => {
+        Alert.alert('Error', 'Failed to load movie details');
+      });
   }, [params._id]);
 
   return (
     <Container>
       <Header>
         <BackButton onPress={handleGoBack}>
-          <Icon name="arrow-left" size={24} color="#ddd" />
+          <Icon testID="go-back" name="arrow-left" size={24} color="#ddd" />
         </BackButton>
       </Header>
 

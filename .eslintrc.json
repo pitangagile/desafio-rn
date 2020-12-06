@@ -36,6 +36,10 @@
     "react/jsx-props-no-spreading": "off",
     "no-underscore-dangle": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["__tests__/**/*", "**/*.test.ts", "**/*.test.tsx", "jest/**/*"] }
+    ],
     "import/prefer-default-export": "off",
     "import/extensions": [
       "error",

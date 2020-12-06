@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -37,14 +37,21 @@ const Dashboard: React.FC = () => {
 
     setLoading(true);
 
-    api.get<Movie[]>(`movies/list?page=${page}&size=3`).then((response) => {
-      setData((oldData) => [...oldData, ...response.data]);
-      if (response.data.length === 0) {
-        setHasReachedEnd(true);
-      }
-      setPage((oldPage) => oldPage + 1);
-      setLoading(false);
-    });
+    api
+      .get<Movie[]>(`movies/list?page=${page}&size=3`)
+      .then((response) => {
+        setData((oldData) => [...oldData, ...response.data]);
+        if (response.data.length === 0) {
+          setHasReachedEnd(true);
+        }
+
+        setPage((oldPage) => oldPage + 1);
+
+        setLoading(false);
+      })
+      .catch(() => {
+        Alert.alert('Error', 'Failed to load movie list');
+      });
   }, [hasReachedEnd, loading, page]);
 
   useEffect(() => {
