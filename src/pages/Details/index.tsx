@@ -78,7 +78,7 @@ const Details: React.FC = () => {
           }}
         >
           {movieDetails?.url ? null : (
-            <MovieImageText>No image available</MovieImageText>
+            <MovieImageText>Sem imagem disponível</MovieImageText>
           )}
         </MovieImage>
 
@@ -93,7 +93,7 @@ const Details: React.FC = () => {
         <DescriptionSection>
           <DescriptionTitleText>
             {movieDetails ? (
-              'Description'
+              'Descrição'
             ) : (
               <SkeletonText length={11} fontSize={16} />
             )}
@@ -110,7 +110,7 @@ const Details: React.FC = () => {
 
         <Footer>
           <SearchButton onPress={handleOpenGoogleSearch}>
-            <SearchButtonText>Search</SearchButtonText>
+            <SearchButtonText>Ver mais detalhes</SearchButtonText>
           </SearchButton>
         </Footer>
       </Content>

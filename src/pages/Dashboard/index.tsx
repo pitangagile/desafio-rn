@@ -73,12 +73,12 @@ const Dashboard: React.FC = () => {
     <Container>
       <ContainerScroll>
         <Header>
-          <HeaderText>My Movies</HeaderText>
+          <HeaderText>Meus Filmes</HeaderText>
         </Header>
 
         <Content>
           <MovieListHeaderText>
-            Choose a movie in the list to see details
+            Escolha um filme na lista para ver mais detalhes
           </MovieListHeaderText>
 
           <MovieList>
@@ -91,7 +91,7 @@ const Dashboard: React.FC = () => {
               loading={loading}
               hasReachedEnd={hasReachedEnd}
               ListFooterComponent={
-                <MovieImageText>No more movies available</MovieImageText>
+                <MovieImageText>Ops, não há mais filmes aqui</MovieImageText>
               }
               renderItem={({ item }) => (
                 <RectButton onPress={() => handleNavigateToDetails(item._id)}>
@@ -102,7 +102,7 @@ const Dashboard: React.FC = () => {
                       }}
                     >
                       {item.url ? null : (
-                        <MovieImageText>No image available</MovieImageText>
+                        <MovieImageText>Sem imagem disponível</MovieImageText>
                       )}
                     </MovieImage>
                     <MovieTitle>{item.name}</MovieTitle>

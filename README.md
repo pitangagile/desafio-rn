@@ -1,5 +1,25 @@
-# Movie Catalog
-Desafio React Native
+<p align="center">
+    <img src="https://github.com/rgerio/desafio-rn/blob/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="240px" alt="Meus Filmes">
+    <h1 align="center">Meus Filmes</h1>
+</p>
+<h4 align="center">Um app que lista alguns filmes e exibe seus detalhes</h4>
+
+<p align="center">
+  <a href="https://github.com/react-native-community/releases/blob/master/CHANGELOG.md">
+    <img src="https://img.shields.io/github/package-json/dependency-version/rgerio/desafio-rn/react-native?color=%2361dafb" alt="Project Dependencies">
+  </a>
+</p>
+
+<br />
+
+<p align="center">
+  Compatível com Android e iOS
+</p>
+
+---
+
+# Meus Filmes
+Desafio React Native da [Pitang](https://www.pitang.com/).
 
 # Criar um aplicativo de consulta a API de Filmes #
 
@@ -40,3 +60,22 @@ Nesta seção sugerimos algumas bibliotecas para o uso, mas fique à vontade par
 
 * [X] Typescript
 * [X] ESLint e Prettier
+
+# Como executar
+
+Execute os seguintes comandos num terminal:
+
+```bash
+# Clone este repo
+git clone https://github.com/rgerio/desafio-rn && cd desafio-rn
+
+# Instale as dependencias
+yarn install
+# Se estiver num Mac e deseja executar no iOS
+cd ios && pod install && cd ..
+
+# Excute o app
+yarn android
+# or
+yarn ios
+```
