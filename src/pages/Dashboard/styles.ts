@@ -5,6 +5,8 @@ export const Container = styled.SafeAreaView`
   background: #15151c;
 `;
 
+export const ContainerScroll = styled.ScrollView``;
+
 export const Header = styled.View`
   padding: 16px;
 `;

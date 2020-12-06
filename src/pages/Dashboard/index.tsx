@@ -9,6 +9,7 @@ import api from '../../services/api';
 
 import {
   Container,
+  ContainerScroll,
   Header,
   HeaderText,
   Content,
@@ -70,46 +71,48 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <HeaderText>My Movies</HeaderText>
-      </Header>
+      <ContainerScroll>
+        <Header>
+          <HeaderText>My Movies</HeaderText>
+        </Header>
 
-      <Content>
-        <MovieListHeaderText>
-          Choose a movie in the list to see details
-        </MovieListHeaderText>
+        <Content>
+          <MovieListHeaderText>
+            Choose a movie in the list to see details
+          </MovieListHeaderText>
 
-        <MovieList>
-          <Carousel
-            data={data}
-            keyExtractor={(item) => item._id}
-            indicatorStyle="white"
-            onEndReached={loadMore}
-            onEndReachedThreshold={1}
-            loading={loading}
-            hasReachedEnd={hasReachedEnd}
-            ListFooterComponent={
-              <MovieImageText>No more movies available</MovieImageText>
-            }
-            renderItem={({ item }) => (
-              <RectButton onPress={() => handleNavigateToDetails(item._id)}>
-                <View>
-                  <MovieImage
-                    source={{
-                      uri: item.url || undefined,
-                    }}
-                  >
-                    {item.url ? null : (
-                      <MovieImageText>No image available</MovieImageText>
-                    )}
-                  </MovieImage>
-                  <MovieTitle>{item.name}</MovieTitle>
-                </View>
-              </RectButton>
-            )}
-          />
-        </MovieList>
-      </Content>
+          <MovieList>
+            <Carousel
+              data={data}
+              keyExtractor={(item) => item._id}
+              indicatorStyle="white"
+              onEndReached={loadMore}
+              onEndReachedThreshold={1}
+              loading={loading}
+              hasReachedEnd={hasReachedEnd}
+              ListFooterComponent={
+                <MovieImageText>No more movies available</MovieImageText>
+              }
+              renderItem={({ item }) => (
+                <RectButton onPress={() => handleNavigateToDetails(item._id)}>
+                  <View>
+                    <MovieImage
+                      source={{
+                        uri: item.url || undefined,
+                      }}
+                    >
+                      {item.url ? null : (
+                        <MovieImageText>No image available</MovieImageText>
+                      )}
+                    </MovieImage>
+                    <MovieTitle>{item.name}</MovieTitle>
+                  </View>
+                </RectButton>
+              )}
+            />
+          </MovieList>
+        </Content>
+      </ContainerScroll>
     </Container>
   );
 };

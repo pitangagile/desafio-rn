@@ -18,7 +18,7 @@ export function useDimensions(): ScaledSize {
   return dimensions;
 }
 
-export function useHorientation(): 'PORTRAIT' | 'LANDSCAPE' {
+export function useOrientation(): 'PORTRAIT' | 'LANDSCAPE' {
   const dimensions = useDimensions();
 
   return dimensions.height >= dimensions.width ? 'PORTRAIT' : 'LANDSCAPE';

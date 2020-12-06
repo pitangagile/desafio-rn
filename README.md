@@ -20,14 +20,14 @@ Criar um aplicativo para consultar a API de Filmes e trazer os filmes enviados p
 ### **Essencial** ##
 * [X] React Native
 * [X] Hooks ou Redux
-* [ ] Guidelines UX e UI.
+* [X] Guidelines UX e UI.
 * [X] Maior ou igual JavaScript ES6
-* [ ] Responsivo
+* [X] Responsivo
 
 ### **Desejável** ###
 
-* [ ] Testes
-* [ ] Build no IOS
+* [X] Testes
+* [X] Build no IOS
 
 ### **Sugestões** ###
 
