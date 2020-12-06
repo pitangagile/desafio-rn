@@ -18,6 +18,14 @@
 
 ---
 
+<p align="center">
+  <a href="https://ibb.co/Svh7wX3">
+    <img src="https://user-images.githubusercontent.com/19890903/101291770-f9a24100-37e9-11eb-8a86-ca935c166bbd.gif" alt="iOS Preview" border="0">
+  </a>
+</p>
+
+---
+
 # Meus Filmes
 Desafio React Native da [Pitang](https://www.pitang.com/).
 
